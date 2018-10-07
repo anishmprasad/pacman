@@ -1334,6 +1334,7 @@ google.pacman || function () {
         console.log('E.prototype.l', this.targetPlayerId);
     };
     E.prototype.z = function (b) {
+        console.log('E.prototype.z', b);
         if (!g.userDisabledSound) {
             google.pacManSound = a;
             g.updateSoundIcon();
@@ -1344,30 +1345,32 @@ google.pacman || function () {
             this.currentSpeed != 2 && this.c(0);
             if (this.dir != 0) this.lastActiveDir = this.dir;
             this.nextDir = 0;
-        } else if (this.dir != b) if (this.dir == 0) {
-            if (g.playfield[this.pos[0]][this.pos[1]].allowedDir & b) this.dir = b;
-        } else {
-            var c = g.playfield[this.tilePos[0]][this.tilePos[1]];
-            if (c && c.allowedDir & b) {
-                c = l[this.dir];
-                var d = [this.pos[0], this.pos[1]];
-                d[c.axis] -= c.increment;
-                var f = 0;
-                if (d[0] == this.tilePos[0] && d[1] == this.tilePos[1]) f = 1;else {
-                    d[c.axis] -= c.increment;
-                    if (d[0] == this.tilePos[0] && d[1] == this.tilePos[1]) f = 2;
-                }
-                if (f) {
-                    this.dir = b;
-                    this.pos[0] = this.tilePos[0];
-                    this.pos[1] = this.tilePos[1];
+        } else if (this.dir != b) {
+            if (this.dir == 0) {
+                if (g.playfield[this.pos[0]][this.pos[1]].allowedDir & b) this.dir = b;
+            } else {
+                var c = g.playfield[this.tilePos[0]][this.tilePos[1]];
+                if (c && c.allowedDir & b) {
                     c = l[this.dir];
-                    this.pos[c.axis] += c.increment * f;
-                    return;
+                    var d = [this.pos[0], this.pos[1]];
+                    d[c.axis] -= c.increment;
+                    var f = 0;
+                    if (d[0] == this.tilePos[0] && d[1] == this.tilePos[1]) f = 1;else {
+                        d[c.axis] -= c.increment;
+                        if (d[0] == this.tilePos[0] && d[1] == this.tilePos[1]) f = 2;
+                    }
+                    if (f) {
+                        this.dir = b;
+                        this.pos[0] = this.tilePos[0];
+                        this.pos[1] = this.tilePos[1];
+                        c = l[this.dir];
+                        this.pos[c.axis] += c.increment * f;
+                        return;
+                    }
                 }
+                this.nextDir = b;
+                this.posDelta = [0, 0];
             }
-            this.nextDir = b;
-            this.posDelta = [0, 0];
         }
     };
     E.prototype.i = function (b) {
@@ -1409,6 +1412,7 @@ google.pacman || function () {
                 }
                 break;
         }
+        console.log('E.prototype.i', b);
     };
     E.prototype.p = function (b) {
         g.tilesChanged = a;
@@ -1429,6 +1433,7 @@ google.pacman || function () {
         !this.ghost && g.playfield[b[0]][b[1]].dot && g.dotEaten(this.id, b);
         this.tilePos[0] = b[0];
         this.tilePos[1] = b[1];
+        console.log('E.prototype.p', b);
     };
     E.prototype.t = function () {
         var b = this.tilePos;
@@ -1454,6 +1459,7 @@ google.pacman || function () {
             b = l[this.nextDir];
             this.posDelta[b.axis] += b.increment;
         }
+        console.log('E.prototype.t', b);
     };
     E.prototype.n = function () {
         if (this.pos[0] == q[0].y * 8 && this.pos[1] == q[0].x * 8) {
@@ -1464,26 +1470,34 @@ google.pacman || function () {
             this.pos[1] = (q[0].x + 1) * 8;
         }
         this.mode == 8 && this.pos[0] == s[0] && this.pos[1] == s[1] && this.a(64);
-        if (!this.ghost && this.pos[0] == v[0] && (this.pos[1] == v[1] || this.pos[1] == v[1] + 8)) g.eatFruit(this.id);
+        if (!this.ghost && this.pos[0] == v[0] && (this.pos[1] == v[1] || this.pos[1] == v[1] + 8)) {
+            g.eatFruit(this.id);
+        }
+        console.log('E.prototype.n', this.pos[0], this.pos[1]);
     };
     E.prototype.u = function () {
         this.n();
         this.ghost && this.i(e);
         var b = g.playfield[this.pos[0]][this.pos[1]];
-        if (b.intersection) if (this.nextDir && this.nextDir & b.allowedDir) {
-            if (this.dir != 0) this.lastActiveDir = this.dir;
-            this.dir = this.nextDir;
-            this.nextDir = 0;
-            if (!this.ghost) {
-                this.pos[0] += this.posDelta[0];
-                this.pos[1] += this.posDelta[1];
-                this.posDelta = [0, 0];
+        if (b.intersection) {
+            if (this.nextDir && this.nextDir & b.allowedDir) {
+                if (this.dir != 0) this.lastActiveDir = this.dir;
+                this.dir = this.nextDir;
+                this.nextDir = 0;
+                if (!this.ghost) {
+                    this.pos[0] += this.posDelta[0];
+                    this.pos[1] += this.posDelta[1];
+                    this.posDelta = [0, 0];
+                }
+            } else if ((this.dir & b.allowedDir) == 0) {
+                if (this.dir != 0) {
+                    this.lastActiveDir = this.dir;
+                }
+                this.nextDir = this.dir = 0;
+                this.c(0);
             }
-        } else if ((this.dir & b.allowedDir) == 0) {
-            if (this.dir != 0) this.lastActiveDir = this.dir;
-            this.nextDir = this.dir = 0;
-            this.c(0);
         }
+        console.log('E.prototype.u', this.lastActiveDir);
     };
     E.prototype.o = function () {
         var b = this.pos[0] / 8,
