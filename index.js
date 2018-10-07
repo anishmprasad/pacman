@@ -21,6 +21,8 @@ import {ControllerDataset} from './controller_dataset';
 import * as ui from './ui';
 import {Webcam} from './webcam';
 
+// import 'babel-polyfill'
+
 // The number of classes we want to predict. In this example, we will be
 // predicting 4 classes for up, down, left, and right.
 const NUM_CLASSES = 4;
@@ -39,7 +41,8 @@ let model;
 async function loadMobilenet() {
   const mobilenet = await tf.loadModel(
       'https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json');
-
+    
+  console.log(mobilenet)
   // Return a model that outputs an internal activation.
   const layer = mobilenet.getLayer('conv_pw_13_relu');
   return tf.model({inputs: mobilenet.inputs, outputs: layer.output});
