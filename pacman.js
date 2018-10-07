@@ -323,17 +323,20 @@ google.pacman ||
                 this.c(0)
               }
             }
-            console.log('E.prototype.u', this.lastActiveDir)            
+          console.log('E.prototype.u', this.lastActiveDir)            
         };
         E.prototype.o = function() {
             var b = this.pos[0] / 8,
                 c = this.pos[1] / 8,
                 d = [Math.round(b) * 8, Math.round(c) * 8];
-            if (d[0] != this.tilePos[0] || d[1] != this.tilePos[1]) this.p(d);
-            else {
+            if (d[0] != this.tilePos[0] || d[1] != this.tilePos[1]){
+               this.p(d);
+            }else {
                 b = [Math.floor(b) * 8, Math.floor(c) * 8];
                 this.pos[1] == b[1] && this.pos[0] == b[0] && this.u()
-            }!this.ghost && this.nextDir && g.playfield[d[0]][d[1]].intersection && this.nextDir & g.playfield[d[0]][d[1]].allowedDir && this.t()
+            }
+            !this.ghost && this.nextDir && g.playfield[d[0]][d[1]].intersection && this.nextDir & g.playfield[d[0]][d[1]].allowedDir && this.t()
+            console.log('E.prototype.o',this.t)                        
         };
         E.prototype.B = function() {
             if (this.id == g.playerCount && g.dotsRemaining < g.levels.elroyDotsLeftPart1 && this.mode == 2 && (!g.lostLifeOnThisLevel || g.actors[g.playerCount + 3].mode != 16)) {
@@ -366,6 +369,7 @@ google.pacman ||
                         break
                 }
             }
+            console.log('E.prototype.B',this.id)  
         };
         E.prototype.v = function() {
             this.routineMoveId++;
@@ -401,28 +405,30 @@ google.pacman ||
         };
         E.prototype.m = function() {
             var b = A[this.routineToFollow][this.routineMoveId];
-            if (b)
-                if (this.speedIntervals[g.intervalTime]) {
-                    var c = l[this.dir];
-                    this.pos[c.axis] += c.increment;
-                    switch (this.dir) {
-                        case 1:
-                        case 4:
-                            if (this.pos[c.axis] < b.dest * 8) {
-                                this.pos[c.axis] = b.dest * 8;
-                                this.proceedToNextRoutineMove = a
-                            }
-                            break;
-                        case 2:
-                        case 8:
-                            if (this.pos[c.axis] > b.dest * 8) {
-                                this.pos[c.axis] = b.dest * 8;
-                                this.proceedToNextRoutineMove = a
-                            }
-                            break
-                    }
-                    this.b()
-                }
+            if (b){
+              if (this.speedIntervals[g.intervalTime]) {
+                  var c = l[this.dir];
+                  this.pos[c.axis] += c.increment;
+                  switch (this.dir) {
+                      case 1:
+                      case 4:
+                          if (this.pos[c.axis] < b.dest * 8) {
+                              this.pos[c.axis] = b.dest * 8;
+                              this.proceedToNextRoutineMove = a
+                          }
+                          break;
+                      case 2:
+                      case 8:
+                          if (this.pos[c.axis] > b.dest * 8) {
+                              this.pos[c.axis] = b.dest * 8;
+                              this.proceedToNextRoutineMove = a
+                          }
+                          break
+                  }
+                  this.b()
+              }
+              console.log('E.prototype.m',b)
+            }
         };
         E.prototype.j = function() {
             if (this.routineMoveId == -1 || this.proceedToNextRoutineMove) {
@@ -448,21 +454,26 @@ google.pacman ||
                 this.physicalSpeed = b;
                 this.speedIntervals = g.getSpeedIntervals(this.physicalSpeed)
             }
+          console.log('E.prototype.d', this.physicalSpeed)
         };
         E.prototype.c = function(b) {
+          console.log('E.prototype.c', b)          
             this.currentSpeed = b;
             this.d()
         };
         E.prototype.e = function() {
-            if (this.dir)
-                if (this.speedIntervals[g.intervalTime]) {
-                    var b = l[this.dir];
-                    this.pos[b.axis] += b.increment;
-                    this.o();
-                    this.b()
-                }
+            console.log('.prototype.e',this.dir,this.speedIntervals[g.intervalTime])
+            if (this.dir){
+              if (this.speedIntervals[g.intervalTime]) {
+                var b = l[this.dir];
+                this.pos[b.axis] += b.increment;
+                this.o();
+                this.b()
+              }
+            }
         };
         E.prototype.move = function() {
+            console.log('.prototype.move',this.followingRoutine)            
             if (g.gameplayMode == 0 || this.ghost && g.gameplayMode == 1 && (this.mode == 8 || this.mode == 64)) {
                 if (this.requestedDir != 0) {
                     this.z(this.requestedDir);
@@ -486,6 +497,7 @@ google.pacman ||
                 this.el.style.left = b + "px";
                 this.el.style.top = c + "px"
             }
+            console.log('.prototype.k',b,c)                        
         };
         E.prototype.s = function() {
             var b = 0,
@@ -595,6 +607,7 @@ google.pacman ||
                 }
                 if (this.id == 1) b += 4
             }
+            console.log('E.prototype.s',c,b)
             return [c, b]
         };
         E.prototype.r = function() {
@@ -677,6 +690,7 @@ google.pacman ||
                 c = 4 + this.id - g.playerCount;
                 if (this.speed > 0 || g.gameplayMode != 13) b += Math.floor(g.globalTime / 16) % 2
             }
+            console.log('E.prototype.r',c,b)
             return [c, b]
         };
         E.prototype.b = function() {
@@ -690,6 +704,7 @@ google.pacman ||
                 b[1] *= 16;
                 g.changeElementBkPos(this.el, b[1], b[0], a)
             }
+            console.log('E.prototype.b',this.el, b[1], b[0], a)
         };
         g.rand = function() {
             var b = 4294967296,
