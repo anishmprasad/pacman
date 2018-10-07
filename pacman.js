@@ -718,6 +718,7 @@ google.pacman ||
                 c = "display: block; position: relative; left: " + -c + "px; top: " + -d + "px";
                 b.innerHTML = '<img style="' + c + '" src="' + spriteURL + '">'
             }
+            console.log('prepareElement',b,c,d)
         };
         g.changeElementBkPos = function(b, c, d, f) {
             if (f) {
