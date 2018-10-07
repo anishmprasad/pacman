@@ -1324,6 +1324,7 @@ google.pacman || function () {
                 }
                 break;
         }
+        console.log('this.d()', this.d());
         this.d();
     };
     E.prototype.l = function () {
@@ -2032,7 +2033,7 @@ google.pacman || function () {
     g.createActorElements = function () {
         for (var b in g.actors) {
             g.actors[b].createElement();
-        }
+        }console.log('createActorElements', g.actors);
     };
     g.createPlayfield = function () {
         g.playfieldEl = document.createElement("div");
