@@ -1,14 +1,7 @@
-/*!
- * Copyright 2018
- * Google LLC
- * PAC-MAN TM & Â©BANDAI NAMCO Entertainment Inc.
- */
 
 import * as variable from './variables'
 
-console.log(variable)
-
-const { A,B,C,D ,a,e,g,i,l,m,n,o,p,q,r,s,v,w,y,z} = variable
+const { A,B,C,D ,a,e,g,i,l,m,n,o,p,q,r,s,v,w,y,z } = variable
 
 window.google = {};
 google.dom = {};

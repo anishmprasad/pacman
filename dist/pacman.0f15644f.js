@@ -36425,22 +36425,7 @@ var ControllerDataset = exports.ControllerDataset = function () {
     }
   }]);
   return ControllerDataset;
-}(); /**
-      * @license
-      * Copyright 2018 Google LLC. All Rights Reserved.
-      * Licensed under the Apache License, Version 2.0 (the "License");
-      * you may not use this file except in compliance with the License.
-      * You may obtain a copy of the License at
-      *
-      * http://www.apache.org/licenses/LICENSE-2.0
-      *
-      * Unless required by applicable law or agreed to in writing, software
-      * distributed under the License is distributed on an "AS IS" BASIS,
-      * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-      * See the License for the specific language governing permissions and
-      * limitations under the License.
-      * =============================================================================
-      */
+}();
 },{"babel-runtime/helpers/classCallCheck":14,"babel-runtime/helpers/createClass":15,"@tensorflow/tfjs":12}],10:[function(require,module,exports) {
 'use strict';
 
@@ -36499,23 +36484,7 @@ var handler = function () {
   return function handler(_x) {
     return _ref.apply(this, arguments);
   };
-}(); /**
-      * @license
-      * Copyright 2018 Google LLC. All Rights Reserved.
-      * Licensed under the Apache License, Version 2.0 (the "License");
-      * you may not use this file except in compliance with the License.
-      * You may obtain a copy of the License at
-      *
-      * http://www.apache.org/licenses/LICENSE-2.0
-      *
-      * Unless required by applicable law or agreed to in writing, software
-      * distributed under the License is distributed on an "AS IS" BASIS,
-      * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-      * See the License for the specific language governing permissions and
-      * limitations under the License.
-      * =============================================================================
-      */
-
+}();
 
 exports.init = init;
 exports.startPacman = startPacman;
@@ -37111,22 +37080,7 @@ var init = function () {
 }();
 
 // Initialize the application.
-/**
- * @license
- * Copyright 2018 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
+
 
 var _tfjs = require('@tensorflow/tfjs');
 
