@@ -1324,11 +1324,14 @@ google.pacman || function () {
                 }
                 break;
         }
-        console.log('this.d()', this.d());
+        console.log('E.prototype.a', b);
         this.d();
     };
     E.prototype.l = function () {
-        if (this.id >= g.playerCount) this.targetPlayerId = Math.floor(g.rand() * g.playerCount);
+        if (this.id >= g.playerCount) {
+            this.targetPlayerId = Math.floor(g.rand() * g.playerCount);
+        }
+        console.log('E.prototype.l', this.targetPlayerId);
     };
     E.prototype.z = function (b) {
         if (!g.userDisabledSound) {
@@ -1549,6 +1552,7 @@ google.pacman || function () {
         this.physicalSpeed = 0;
         this.speedIntervals = g.getSpeedIntervals(b.speed);
         this.proceedToNextRoutineMove = e;
+        console.log('E.prototype.v');
         this.b();
     };
     E.prototype.m = function () {
@@ -1576,7 +1580,11 @@ google.pacman || function () {
         }
     };
     E.prototype.j = function () {
-        if (this.routineMoveId == -1 || this.proceedToNextRoutineMove) this.v();
+        if (this.routineMoveId == -1 || this.proceedToNextRoutineMove) {
+            console.log('E.prototype.j', this.routineMoveId, this.proceedToNextRoutineMove);
+            this.v();
+        }
+        console.log('E.prototype.j');
         this.m();
     };
     E.prototype.d = function () {
