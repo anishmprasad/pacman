@@ -1,3 +1,3 @@
-# pacman-machine-learning
+# Pacman
 
 Coming soon
