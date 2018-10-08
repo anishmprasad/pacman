@@ -37,7 +37,7 @@ google.pacman ||
             g.randSeed = b
         };
         g.getDistance = function(b, c) {
-          console.log('getDistance', Math.sqrt((c[1] - b[1]) * (c[1] - b[1]) + (c[0] - b[0]) * (c[0] - b[0])))
+            console.log('getDistance', Math.sqrt((c[1] - b[1]) * (c[1] - b[1]) + (c[0] - b[0]) * (c[0] - b[0])))
             return Math.sqrt((c[1] - b[1]) * (c[1] - b[1]) + (c[0] - b[0]) * (c[0] - b[0]))
         };
         g.getPlayfieldX = function(b) {
@@ -213,10 +213,14 @@ google.pacman ||
             }
         };
         g.restartActors = function() {
-            for (var b in g.actors) g.actors[b].A()
+            for (var b in g.actors){
+              g.actors[b].A()
+            }
         };
         g.createActorElements = function() {
-            for (var b in g.actors) g.actors[b].createElement()
+            for (var b in g.actors){
+              g.actors[b].createElement()
+            }
             console.log('createActorElements',g.actors)
         };
         g.createPlayfield = function() {
@@ -385,7 +389,9 @@ google.pacman ||
             g.restartActors();
             g.updateActorPositions();
             g.switchMainGhostMode(2, a);
-            for (var c = g.playerCount + 1; c < g.playerCount + 4; c++) g.actors[c].a(16);
+            for (var c = g.playerCount + 1; c < g.playerCount + 4; c++){
+              g.actors[c].a(16);
+            }
             g.dotEatingChannel = [0, 0];
             g.dotEatingSoundPart = [1, 1];
             g.clearDotEatingNow();
@@ -555,6 +561,7 @@ google.pacman ||
             if (g.dotsEaten == 70 || g.dotsEaten == 170) g.showFruit();
             g.dotsRemaining == 0 && g.finishLevel();
             g.playAmbientSound()
+            console.log('dotEaten',g.dotsEaten,g.dotsRemaining)
         };
         g.getFruitSprite = function(b) {
             var c = b <= 4 ? 128 : 160;

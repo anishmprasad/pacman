@@ -1151,7 +1151,7 @@ var a = exports.a = true,
 },
     C = exports.C = [90, 60, 45],
     D = exports.D = C[0];
-},{}],251:[function(require,module,exports) {
+},{}],12:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2102,7 +2102,8 @@ google.pacman || function () {
     g.createActorElements = function () {
         for (var b in g.actors) {
             g.actors[b].createElement();
-        }console.log('createActorElements', g.actors);
+        }
+        console.log('createActorElements', g.actors);
     };
     g.createPlayfield = function () {
         g.playfieldEl = document.createElement("div");
@@ -2265,7 +2266,8 @@ google.pacman || function () {
         g.switchMainGhostMode(2, a);
         for (var c = g.playerCount + 1; c < g.playerCount + 4; c++) {
             g.actors[c].a(16);
-        }g.dotEatingChannel = [0, 0];
+        }
+        g.dotEatingChannel = [0, 0];
         g.dotEatingSoundPart = [1, 1];
         g.clearDotEatingNow();
         b ? g.changeGameplayMode(4) : g.changeGameplayMode(6);
@@ -2433,6 +2435,7 @@ google.pacman || function () {
         if (g.dotsEaten == 70 || g.dotsEaten == 170) g.showFruit();
         g.dotsRemaining == 0 && g.finishLevel();
         g.playAmbientSound();
+        console.log('dotEaten', g.dotsEaten, g.dotsRemaining);
     };
     g.getFruitSprite = function (b) {
         var c = b <= 4 ? 128 : 160;
@@ -3311,5 +3314,5 @@ google.pacman || function () {
     };
     g.init();
 }();
-},{"./variables":3,"./prototype":251}]},{},[4], null)
+},{"./variables":3,"./prototype":12}]},{},[4], null)
 //# sourceMappingURL=/pacman.9456f925.map
