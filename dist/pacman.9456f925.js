@@ -2205,7 +2205,9 @@ google.pacman || function () {
         b.stopPropagation();
     };
     g.handleTouchMove = function (b) {
-        if (b.touches.length > 1) g.cancelTouch();else {
+        if (b.touches.length > 1) {
+            g.cancelTouch();
+        } else {
             g.touchDX = b.touches[0].pageX - g.touchStartX;
             g.touchDY = b.touches[0].pageY - g.touchStartY;
         }
@@ -2213,7 +2215,9 @@ google.pacman || function () {
         b.stopPropagation();
     };
     g.handleTouchEnd = function (b) {
-        if (g.touchDX == 0 && g.touchDY == 0) g.canvasClicked(g.touchStartX, g.touchStartY);else {
+        if (g.touchDX == 0 && g.touchDY == 0) {
+            g.canvasClicked(g.touchStartX, g.touchStartY);
+        } else {
             var c = Math.abs(g.touchDX),
                 d = Math.abs(g.touchDY);
             if (c < 8 && d < 8) g.canvasClicked(g.touchStartX, g.touchStartY);else if (c > 15 && d < c * 2 / 3) g.actors[0].requestedDir = g.touchDX > 0 ? 8 : 4;else if (d > 15 && c < d * 2 / 3) g.actors[0].requestedDir = g.touchDY > 0 ? 2 : 1;
@@ -2350,6 +2354,7 @@ google.pacman || function () {
         g.lives == -1 ? g.changeGameplayMode(8) : g.restartGameplay(e);
     };
     g.switchMainGhostMode = function (b, c) {
+        console.log("switchMainGhostMode", b, c);
         if (b == 4 && g.levels.frightTime == 0) for (var d in g.actors) {
             var f = g.actors[d];
             if (f.ghost) f.reverseDirectionsNext = a;
@@ -2418,6 +2423,7 @@ google.pacman || function () {
         g.forcePenLeaveTime = g.levels.penForceTime * D;
     };
     g.dotEaten = function (b, c) {
+        console.log("dotEaten", b, c);
         g.dotsRemaining--;
         g.dotsEaten++;
         g.actors[b].c(1);
@@ -2452,12 +2458,14 @@ google.pacman || function () {
         g.changeElementBkPos(g.fruitEl, 32, 16, a);
     };
     g.showFruit = function () {
+        console.log("showFruit");
         g.fruitShown = a;
         var b = g.getFruitSprite(g.levels.fruit);
         g.changeElementBkPos(g.fruitEl, b[0], b[1], a);
         g.fruitTime = g.timing[15] + (g.timing[16] - g.timing[15]) * g.rand();
     };
     g.eatFruit = function (b) {
+        console.log("eatFruit");
         if (g.fruitShown) {
             g.playSound("fruit", 0);
             g.fruitShown = e;
@@ -2469,6 +2477,7 @@ google.pacman || function () {
     };
     g.updateActorTargetPositions = function () {
         for (var b = g.playerCount; b < g.playerCount + 4; b++) {
+            console.log("updateActorTargetPositions");
             g.actors[b].B();
         }
     };
