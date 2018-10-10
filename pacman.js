@@ -603,7 +603,6 @@ google.pacman ||
         };
         g.updateActorTargetPositions = function() {
             for (var b = g.playerCount; b < g.playerCount + 4; b++){
-                console.log("updateActorTargetPositions");
                 g.actors[b].B()
             }
         };
