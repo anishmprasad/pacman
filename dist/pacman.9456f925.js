@@ -98,7 +98,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   // Override the current require with this new one
   return newRequire;
-})({3:[function(require,module,exports) {
+})({4:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1151,7 +1151,7 @@ var a = exports.a = true,
 },
     C = exports.C = [90, 60, 45],
     D = exports.D = C[0];
-},{}],12:[function(require,module,exports) {
+},{}],9:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1847,7 +1847,7 @@ E.prototype.b = function () {
     g.changeElementBkPos(this.el, b[1], b[0], a);
   }
 };
-},{"./variables":3}],4:[function(require,module,exports) {
+},{"./variables":4}],3:[function(require,module,exports) {
 'use strict';
 
 var _variables = require('./variables');
@@ -3314,5 +3314,5 @@ google.pacman || function () {
     };
     g.init();
 }();
-},{"./variables":3,"./prototype":12}]},{},[4], null)
+},{"./variables":4,"./prototype":9}]},{},[3], null)
 //# sourceMappingURL=/pacman.9456f925.map
