@@ -1862,8 +1862,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-console.log(_prototype2.default);
-
 var A = variable.A,
     B = variable.B,
     C = variable.C,
@@ -1885,6 +1883,8 @@ var A = variable.A,
     y = variable.y,
     z = variable.z;
 
+
+console.log('n => ', n);
 
 window.google = {};
 google.dom = {};
@@ -1916,7 +1916,7 @@ google.pacman || function () {
         g.randSeed = b;
     };
     g.getDistance = function (b, c) {
-        console.log('getDistance', Math.sqrt((c[1] - b[1]) * (c[1] - b[1]) + (c[0] - b[0]) * (c[0] - b[0])));
+        // console.log('getDistance', Math.sqrt((c[1] - b[1]) * (c[1] - b[1]) + (c[0] - b[0]) * (c[0] - b[0])))
         return Math.sqrt((c[1] - b[1]) * (c[1] - b[1]) + (c[0] - b[0]) * (c[0] - b[0]));
     };
     g.getPlayfieldX = function (b) {
@@ -1957,11 +1957,14 @@ google.pacman || function () {
         }
     };
     g.changeElementBkPos = function (b, c, d, f) {
+        console.log('changeElementBkPos', b.id, c, d, f);
         if (f) {
             c = g.getCorrectedSpritePos(c);
             d = g.getCorrectedSpritePos(d);
         }
-        if (g.useCss) b.style.backgroundPosition = -c + "px " + -d + "px";else if (b.childNodes[0]) {
+        if (g.useCss) {
+            b.style.backgroundPosition = -c + "px " + -d + "px";
+        } else if (b.childNodes[0]) {
             b.childNodes[0].style.left = -c + "px";
             b.childNodes[0].style.top = -d + "px";
         }
@@ -1994,11 +1997,13 @@ google.pacman || function () {
         }
     };
     g.preparePaths = function () {
+        console.log("preparePaths", n);
         for (var b in n) {
             var c = n[b],
                 d = c.type;
             if (c.w) {
                 for (var f = c.y * 8, h = c.x * 8; h <= (c.x + c.w - 1) * 8; h += 8) {
+                    // console.log("g.playfield[f][h]", g.playfield[f][h]);
                     g.playfield[f][h].path = a;
                     if (g.playfield[f][h].dot == 0) {
                         g.playfield[f][h].dot = 1;
@@ -2088,6 +2093,7 @@ google.pacman || function () {
         g.actors = [];
         for (var b = 0; b < g.playerCount + 4; b++) {
             g.actors[b] = new _prototype2.default(b);
+            console.log('createActors', g.actors);
             if (b < g.playerCount) {
                 g.actors[b].ghost = e;
                 g.actors[b].mode = 1;
