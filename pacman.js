@@ -26,14 +26,12 @@ google.pacman ||
     function() {
         
         g.rand = function() {
-            console.log('rand');
             var b = 4294967296,
                 c = 134775813;
             c = c * g.randSeed + 1;
             return (g.randSeed = c % b) / b
         };
         g.seed = function(b) {
-            console.log('seed');
             g.randSeed = b
         };
         g.getDistance = function(b, c) {
@@ -78,7 +76,6 @@ google.pacman ||
             }
         };
         g.changeElementBkPos = function(b, c, d, f) {
-            console.log('changeElementBkPos',b.id,c,d,f)
             if (f) {
                 c = g.getCorrectedSpritePos(c);
                 d = g.getCorrectedSpritePos(d)
